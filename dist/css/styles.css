@@ -12,12 +12,8 @@ body {
   overflow-x: hidden;
 }
 
-.container {
-  max-width: 76rem;
-  margin: 0 auto;
-}
-
-.link {
+.link,
+.footer__link {
   text-decoration: none;
   border: none;
   text-align: center;
@@ -27,6 +23,15 @@ body {
   padding: 0.5em;
   font-size: 1.3em;
   min-width: 17em;
+}
+
+.text {
+  padding-left: 0.3rem;
+}
+
+.container {
+  max-width: 76rem;
+  margin: 0 auto;
 }
 
 .link:hover {
@@ -73,6 +78,12 @@ body {
   font-size: 1.6em;
 }
 
+.header__link {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
 .divide {
   display: flex;
 }
@@ -83,8 +94,11 @@ body {
 }
 
 .sidebar .menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
   padding: 1.5em;
-  position: relative;
 }
 
 .sidebar .menu__list {
@@ -97,25 +111,6 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-
-.sidebar .menu__list-creator {
-  position: absolute;
-  text-decoration: none;
-  border: none;
-  text-align: center;
-  color: #fff;
-  cursor: pointer;
-  background-color: #9C0D38;
-  padding: 0.5em;
-  font-size: 1.3em;
-  min-width: 17em;
-  bottom: 0;
-  margin-bottom: 1rem;
-}
-
-.sidebar .menu__list-creator:hover {
-  background-color: #FCC8B2;
 }
 
 .main {
@@ -224,15 +219,6 @@ body {
 .footer__link {
   padding: 1rem;
   display: inline-block;
-  text-decoration: none;
-  border: none;
-  text-align: center;
-  color: #fff;
-  cursor: pointer;
-  background-color: #333;
-  padding: 0.5em;
-  font-size: 1.3em;
-  min-width: 17em;
   border-radius: 0.3rem;
 }
 

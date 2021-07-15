@@ -16,24 +16,28 @@ body{
 
 }
 
-@mixin links($color){
+%links{
     text-decoration: none;
     border:none;
     text-align: center;
     color: $textWhite;
     cursor: pointer;
-    background-color: $color;
+    background-color: $primary;
     padding: 0.5em ;
     font-size: 1.3em;
     min-width: 17em;
+    
 
+}
+.text{
+    padding-left:0.3rem ;
 }
 .container{
     max-width: 76rem;
     margin:0 auto;
 }
 .link{
-   @include links($primary);      
+   @extend %links;      
     &:hover{
         background-color: $hover;
     }
@@ -71,6 +75,11 @@ body{
             font-size: 1.6em;
         }
     }
+    &__link{
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+    }
    
 }
 .divide{
@@ -84,10 +93,9 @@ body{
 
   
     .menu{
-     padding: 1.5em;
-  position: relative;
- 
-     
+        @include flex(space-between);
+        flex-direction: column;
+        padding: 1.5em;
     &__list{
     list-style: none;
     }
@@ -97,17 +105,6 @@ body{
     flex-direction: column;
   
     }
-
-    &__list-creator{
-        position: absolute;
-        @include links($primary);
-       bottom: 0;
-       margin-bottom:1rem;
-        &:hover{
-            background-color: $hover;
-        }
-    }
-   
     }
 }
 
@@ -198,7 +195,7 @@ height:9rem;
     &__link{
     padding: 1rem;
     display: inline-block;
-    @include links($textBlack);
+    @extend %links;
     border-radius: 0.3rem;
     &:hover{
         background-color: $hover;
