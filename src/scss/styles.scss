@@ -1,28 +1,11 @@
 
 @import './resets';
 @import './variables';
-html{
-    width: 100vw;
-    height: 100vh;
-}
-body{
-    background: linear-gradient(to right, #d3cce3, #e9e4f0);
-    font-size: 62.5%;
-    overflow-x: hidden;
-}
 @mixin flex($justify) {
     display: flex;
     justify-content: $justify;
     align-items: center;
 
-}
-%glassmorphismtomain{
-    background: rgba( 62, 105, 217, 0.50 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 9.0px );
--webkit-backdrop-filter: blur( 9.0px );
-border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 @mixin netbook{
     @media screen and (max-width:60em) {
@@ -39,6 +22,14 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
         @content;
     }
 }
+%glassmorphismtomain{
+    background: rgba( 62, 105, 217, 0.50 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 9.0px );
+-webkit-backdrop-filter: blur( 9.0px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
 %glassmorphismtocomp{
     background: rgba( 54, 220, 183, 0.25 );
 box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
@@ -47,7 +38,6 @@ backdrop-filter: blur( 4px );
 border-radius: 10px;
 border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
-
 %links{
     text-decoration: none;
     border:none;
@@ -58,8 +48,15 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     padding: 0.5em ;
     font-size: 1.3em;
     min-width: 17em;
-    
-
+}
+html{
+    width: 100vw;
+    height: 100vh;
+}
+body{
+    background: linear-gradient(to right, #d3cce3, #e9e4f0);
+    font-size: 62.5%;
+    overflow-x: hidden;
 }
 .text{
     padding-left:0.3rem ;
@@ -96,10 +93,8 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
         line-height: 1.4rem;
         -webkit-box-orient: vertical;
         max-width: 8.1rem;
-    }
-    
+    } 
 }
-
 .header{
     @include flex(space-between);    
     padding:0.3em 2em;
@@ -122,7 +117,6 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
             font-size: 1.6em;
         }
     }
- 
     &__link{
        @include flex(center);
         flex-direction: row;
@@ -133,8 +127,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     }
 }
 .divide{
-    display: flex;
-  
+    display: flex; 
 }
 .sidebar{   
     display: flex;
@@ -153,7 +146,6 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     }
     }
 }
-
 .main{
    
    width: 59.7rem;
@@ -182,20 +174,17 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
             height: 30em;
             width: 18em;
         }
-        @include tablet(){
-           
+        @include tablet(){          
             height: 20em;
             width: 10em;
-        }
-       
+        }       
       @extend %glassmorphismtomain;
         &__content_center{
             
        @include flex(center);
         height: 40em;
         @include netbook(){
-            height: 30em;
-           
+            height: 30em;          
         } 
         @include tablet(){
             height: 20em
@@ -207,8 +196,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
          height: 40em;
          @include netbook(){
             height: 30em;
-            margin-bottom:2rem;
-           
+            margin-bottom:2rem;          
         }
         @include tablet(){
             height: 20em
@@ -279,8 +267,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
        
     }
 }
-  .list{
-     
+  .list{    
      height: auto;
     @include flex(center);
      &-article{    
@@ -296,16 +283,12 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
        @include tablet(){
           align-items: flex-start;
            flex-direction: column;
-           width: 6rem;
-          
-       }
-       
+           width: 6rem;       
+       }   
          &__top{      
              height: 10rem;   
              margin: 0.5rem;
             @extend %glassmorphismtocomp; 
-                 
-    
          }
        &__center{
         margin: 0.5rem;
@@ -313,8 +296,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
        @include flex(center);
       
      
-       @extend %glassmorphismtocomp;
-      
+       @extend %glassmorphismtocomp;    
             }
         &__bottom{ 
             margin: 0.5rem;
@@ -325,10 +307,6 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
      } 
     
   }
-    
-  
-  
-
 .footer{
     background-color: $headerFooter;
     padding: 1rem;
@@ -342,6 +320,3 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     }
     }
     }
-    
-
-  
