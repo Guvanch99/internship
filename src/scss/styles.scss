@@ -15,6 +15,32 @@ body{
     align-items: center;
 
 }
+%glassmorphismtomain{
+    background: rgba( 62, 105, 217, 0.50 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 9.0px );
+-webkit-backdrop-filter: blur( 9.0px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+@mixin netbook{
+    @media screen and (max-width:60em) {
+        @content;
+    }
+}
+@mixin tablet{
+    @media screen and(max-width:50em){
+        @content;
+    }
+}
+%glassmorphismtocomp{
+    background: rgba( 54, 220, 183, 0.25 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 4px );
+-webkit-backdrop-filter: blur( 4px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
 
 %links{
     text-decoration: none;
@@ -41,6 +67,12 @@ body{
     &:hover{
         background-color: $hover;
     }
+    @include netbook(){
+        min-width: 10em;
+    }
+    @include tablet(){
+        min-width: 4em;
+    }
 }
 .text_container-small{
     background-color: $SmallBackgroundColor;
@@ -50,6 +82,15 @@ body{
     border-radius: 10%;
     max-width: 10rem;
     margin: 0.5rem;
+    @include netbook(){
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        line-height: 1.4rem;
+        -webkit-box-orient: vertical;
+        max-width: 8.1rem;
+    }
     
 }
 
@@ -75,15 +116,19 @@ body{
             font-size: 1.6em;
         }
     }
+ 
     &__link{
-        display: flex;
-        align-items: center;
+       @include flex(center);
         flex-direction: row;
+        @extend %links;
+        @include netbook(){
+            min-width: 10em;
+        }
     }
-   
 }
 .divide{
     display: flex;
+  
 }
 .sidebar{
    
@@ -93,7 +138,9 @@ body{
 
   
     .menu{
+
         @include flex(space-between);
+     
         flex-direction: column;
         padding: 1.5em;
     &__list{
@@ -110,88 +157,148 @@ body{
 
 .main{
    @include flex(space-around);
-  height: 45em;
+   width: 59.7rem;
+   @include netbook(){
+       @include flex(center);
+       width: 50rem;
+   }
+    height: 45em;
     background-image: linear-gradient(to right bottom, #769323, #71a93b, #65bf56, #4fd575, #12eb98);
         &-article{
         margin: 1rem;
         height: 40em;
         width:  30em;
         border-radius: 2rem;
-       background-color: $primary;
+        @include netbook(){
+            height: 30em;
+            width: 18em;
+        }
+      @extend %glassmorphismtomain;
         &__content_center{
             
        @include flex(center);
         height: 40em;
+        @include netbook(){
+            height: 30em;
+           
+        }
     
         }
         &__content_space{
          @include flex(space-between);
          flex-direction: column;
          height: 40em;
-         
-   
+         @include netbook(){
+            height: 30em;
+            margin-bottom:2rem;
+           
+        }
         }
     }
-
 }
 .complementory{
     height:auto;
+    width: 59.7rem;
     background-image: linear-gradient(to right bottom, #e5311a, #fd0048, #ff0079, #ff00b0, #e712eb);
   @include flex(center);
     flex-direction: column;
-    max-width: 64rem;
-    &-article{
+    @include netbook(){
+        width: 50rem;
+    }
+   
+    
+    
+    &-article{  
         padding: 1rem;
         margin: 1rem;
         border-radius: 4rem;
-        background-color: $primary;
+        
+        @extend %glassmorphismtocomp;
+
+        @include netbook(){
+            max-width: 30rem;
+        }
     }
     
     &-article__content_column{
         @include flex(center);  
-     height: 13rem;
-     max-width: 60rem;
+        height: 13rem;
+        max-width: 60rem;
+        @include netbook(){
+      
+         max-width: 30rem;
+      
+     }
     }
     &-article__text_container-big{
         background-color: $BigBackgroundColor;
-       max-width: 22rem;
+       max-width: 25rem;
         margin: 1em;
         padding: 1rem;
         text-align: center;
         max-height: 8rem;
         border-radius: 8%;
-        background-color: $BigBackgroundColor;
+       
         font-size: 1.2em;
         color: $textBlack;
         box-shadow: 2px 5px 15px 5px rgba(0,0,0,0.9);
+        @include netbook(){
+            max-width: 18rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 6;
+            -webkit-box-orient: vertical;
+        }
        
     }
 }
   .list{
-      @include flex(center);
-     height: auto;
-    
      
-      &-article{
-          height: 10rem;
-          background-color: $primary;
-          border-radius: 10%;
-          margin:1rem 5rem;
- &__center{
-@include flex(center);
-height:9rem;
- }
- &__bottom{
-     @include flex(flex-end);
-     height:15.5rem;
- }
-      } 
+     height: auto;
+    @include flex(center);
+     &-article{    
+        display: flex;
+        justify-content: space-around;   
+        width: 50rem;
+         height: 10rem;
+         border-radius: 10%;  
+       @include netbook(){
+           display: flex;
+           justify-content: center;
+   
+       
+       }
+       
+         &__top{         
+            @extend %glassmorphismtocomp; 
+                 
+          
+         }
+       &__center{
+
+       @include flex(center);
+       margin-left: 1rem;
+     
+       @extend %glassmorphismtocomp;
+      
+            }
+        &__bottom{ 
+       padding-top:6rem; 
+       margin-left: 1rem;
+    @extend %glassmorphismtocomp;
+        }
+     } 
+    
   }
+    
+  
   
 
 .footer{
     background-color: $headerFooter;
     padding: 1rem;
+   
     &__link{
     padding: 1rem;
     display: inline-block;
@@ -202,3 +309,10 @@ height:9rem;
     }
     }
     }
+    /*
+    
+    Media querries
+    
+    */
+
+  
