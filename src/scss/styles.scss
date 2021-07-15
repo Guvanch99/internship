@@ -1,10 +1,11 @@
 
 @import './resets';
 @import './variables';
-
-body{
-    height: 100vh;
+html{
     width: 100vw;
+    height: 100vh;
+}
+body{
     background: linear-gradient(to right, #d3cce3, #e9e4f0);
     font-size: 62.5%;
     overflow-x: hidden;
@@ -30,6 +31,11 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 @mixin tablet{
     @media screen and(max-width:50em){
+        @content;
+    }
+}
+@mixin mobile {
+    @media screen and(max-width:40em){
         @content;
     }
 }
@@ -98,7 +104,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     @include flex(space-between);    
     padding:0.3em 2em;
     background-color: $headerFooter;
-  
+  max-width: 64;
     .avatar{
     @include flex(center);
         &__logo{
@@ -130,17 +136,11 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     display: flex;
   
 }
-.sidebar{
-   
+.sidebar{   
     display: flex;
     background-color: $sidebar;
-   
-
-  
-    .menu{
-
+   .menu{
         @include flex(space-between);
-     
         flex-direction: column;
         padding: 1.5em;
     &__list{
@@ -149,21 +149,30 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     &__list-item{
     padding: 0.5em;
     @include flex(center);
-    flex-direction: column;
-  
+    flex-direction: column; 
     }
     }
 }
 
 .main{
-   @include flex(space-around);
+   
    width: 59.7rem;
+   height: 45em;
+   background-image: linear-gradient(to right bottom, #769323, #71a93b, #65bf56, #4fd575, #12eb98);
+   @include flex(space-around);
    @include netbook(){
        @include flex(center);
        width: 50rem;
    }
-    height: 45em;
-    background-image: linear-gradient(to right bottom, #769323, #71a93b, #65bf56, #4fd575, #12eb98);
+   @include tablet(){
+       flex-direction: column;
+       height: auto;
+   }
+   @include mobile{
+       width: 40rem;
+       padding-right:4rem ;
+   } 
+  
         &-article{
         margin: 1rem;
         height: 40em;
@@ -173,6 +182,12 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
             height: 30em;
             width: 18em;
         }
+        @include tablet(){
+           
+            height: 20em;
+            width: 10em;
+        }
+       
       @extend %glassmorphismtomain;
         &__content_center{
             
@@ -181,8 +196,10 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
         @include netbook(){
             height: 30em;
            
+        } 
+        @include tablet(){
+            height: 20em
         }
-    
         }
         &__content_space{
          @include flex(space-between);
@@ -192,6 +209,9 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
             height: 30em;
             margin-bottom:2rem;
            
+        }
+        @include tablet(){
+            height: 20em
         }
         }
     }
@@ -204,19 +224,24 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     flex-direction: column;
     @include netbook(){
         width: 50rem;
+    } 
+    @include tablet(){
+        width: 40rem;
+    } 
+    @include mobile(){
+        width: 35rem;
     }
-   
-    
-    
     &-article{  
         padding: 1rem;
         margin: 1rem;
         border-radius: 4rem;
-        
         @extend %glassmorphismtocomp;
-
         @include netbook(){
             max-width: 30rem;
+        }
+        @include tablet(){
+            max-width: 20rem;
+           margin-right:4rem;
         }
     }
     
@@ -225,9 +250,10 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
         height: 13rem;
         max-width: 60rem;
         @include netbook(){
-      
-         max-width: 30rem;
-      
+         max-width: 20rem;
+     }
+     @include tablet(){
+         flex-direction: column;
      }
     }
     &-article__text_container-big{
@@ -261,31 +287,39 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
         display: flex;
         justify-content: space-around;   
         width: 50rem;
-         height: 10rem;
+         
          border-radius: 10%;  
        @include netbook(){
            display: flex;
-           justify-content: center;
-   
-       
+           justify-content: center; 
+       }
+       @include tablet(){
+          align-items: flex-start;
+           flex-direction: column;
+           width: 6rem;
+          
        }
        
-         &__top{         
+         &__top{      
+             height: 10rem;   
+             margin: 0.5rem;
             @extend %glassmorphismtocomp; 
                  
-          
+    
          }
        &__center{
-
+        margin: 0.5rem;
+        height: 10rem; 
        @include flex(center);
-       margin-left: 1rem;
+      
      
        @extend %glassmorphismtocomp;
       
             }
         &__bottom{ 
-       padding-top:6rem; 
-       margin-left: 1rem;
+            margin: 0.5rem;
+       padding-top:7rem; 
+      
     @extend %glassmorphismtocomp;
         }
      } 
@@ -298,7 +332,6 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 .footer{
     background-color: $headerFooter;
     padding: 1rem;
-   
     &__link{
     padding: 1rem;
     display: inline-block;
@@ -309,10 +342,6 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     }
     }
     }
-    /*
     
-    Media querries
-    
-    */
 
   

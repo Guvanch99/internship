@@ -4,9 +4,12 @@
   box-sizing: border-box;
 }
 
-body {
-  height: 100vh;
+html {
   width: 100vw;
+  height: 100vh;
+}
+
+body {
   background: linear-gradient(to right, #d3cce3, #e9e4f0);
   font-size: 62.5%;
   overflow-x: hidden;
@@ -76,6 +79,7 @@ body {
   align-items: center;
   padding: 0.3em 2em;
   background-color: #DDF0FF;
+  max-width: 64;
 }
 
 .header .avatar {
@@ -137,12 +141,12 @@ body {
 }
 
 .main {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
   width: 59.7rem;
   height: 45em;
   background-image: linear-gradient(to right bottom, #769323, #71a93b, #65bf56, #4fd575, #12eb98);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .main-article {
@@ -215,20 +219,25 @@ body {
   display: flex;
   justify-content: space-around;
   width: 50rem;
-  height: 10rem;
   border-radius: 10%;
 }
 
+.list-article__top {
+  height: 10rem;
+  margin: 0.5rem;
+}
+
 .list-article__center {
+  margin: 0.5rem;
+  height: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 1rem;
 }
 
 .list-article__bottom {
-  padding-top: 6rem;
-  margin-left: 1rem;
+  margin: 0.5rem;
+  padding-top: 7rem;
 }
 
 .footer {
@@ -245,12 +254,6 @@ body {
 .footer__link:hover {
   background-color: #FCC8B2;
 }
-
-/*
-    
-    Media querries
-    
-    */
 
 @media screen and (max-width: 60em) {
   .link {
@@ -301,7 +304,7 @@ body {
   }
 
   .complementory-article__content_column {
-    max-width: 30rem;
+    max-width: 20rem;
   }
 
   .complementory-article__text_container-big {
@@ -322,5 +325,53 @@ body {
 @media screen and (max-width: 50em) {
   .link {
     min-width: 4em;
+  }
+
+  .main {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .main-article {
+    height: 20em;
+    width: 10em;
+  }
+
+  .main-article__content_center {
+    height: 20em;
+  }
+
+  .main-article__content_space {
+    height: 20em;
+  }
+
+  .complementory {
+    width: 40rem;
+  }
+
+  .complementory-article {
+    max-width: 20rem;
+    margin-right: 4rem;
+  }
+
+  .complementory-article__content_column {
+    flex-direction: column;
+  }
+
+  .list-article {
+    align-items: flex-start;
+    flex-direction: column;
+    width: 6rem;
+  }
+}
+
+@media screen and (max-width: 40em) {
+  .main {
+    width: 40rem;
+    padding-right: 4rem;
+  }
+
+  .complementory {
+    width: 35rem;
   }
 }
